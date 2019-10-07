@@ -75,8 +75,8 @@ class MyGame(arcade.Window):
 
         # Set up the player, specifically placing it at these coordinates.
         self.player_sprite = arcade.Sprite("assets/player.png", CHARACTER_SCALING)
-        self.player_sprite.center_y = 96
-        self.player_sprite.center_x = 64
+        self.player_sprite.center_y = 700
+        self.player_sprite.center_x = 44
         self.player_list.append(self.player_sprite)
 
         # --- Load in a map from the tiled editor ---
@@ -181,12 +181,14 @@ class MyGame(arcade.Window):
         if self.player_sprite.top > top_boundary:
             self.view_bottom += self.player_sprite.top - top_boundary
             changed = True
+            
 
         # Scroll down
         bottom_boundary = self.view_bottom + BOTTOM_VIEWPORT_MARGIN
         if self.player_sprite.bottom < bottom_boundary:
             self.view_bottom -= bottom_boundary - self.player_sprite.bottom
             changed = True
+            
 
         if changed:
             # Only scroll to integers. Otherwise we end up with pixels that
